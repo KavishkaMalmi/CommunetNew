@@ -1,21 +1,16 @@
 import express from 'express';
-import { addExpense, deleteExpense, getExpenses, updateExpense } from '../controllers/expenseController.js';
-import upload from '../middlewares/multer.js'
+import {
+  addExpense,
+  getExpenses,
+  updateExpense,
+  deleteExpense,
+} from '../controllers/expenseController.js';
 
-const expenseRouter = express.Router();
+const router = express.Router();
 
-// Post route to add expense
-expenseRouter.post('/add-expense',upload.single('image'), addExpense);
+router.post('/add-expense', addExpense);
+router.get('/get-expenses', getExpenses);
+router.put('/update-expense/:id', updateExpense);
+router.delete('/delete-expense/:id', deleteExpense);
 
-// PUT route to update expense
-expenseRouter.put('/update-expense/:id',upload.single('image'), updateExpense);
-
-// GET route to get all expenses
-expenseRouter.get('/get-expenses', getExpenses);
-
-// DELETE route to delete expense
-expenseRouter.delete('/delete-expense/:id', deleteExpense);
-
-
-
-export default expenseRouter;
+export default router;

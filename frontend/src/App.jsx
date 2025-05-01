@@ -12,7 +12,7 @@ import AdminUpdate from '../src/pages/AdminUpdate'
 
 import AddMaintenance from './pages/AddMaintenance';
 import AddElection from '../src/pages/AddElection'
-import AddEvent from './pages/AddEvent';
+import AddEvent from './pages/AddEvents';
 import ContactUs from './pages/ContactUs'
 
 import Rules from './pages/Rules'
@@ -22,7 +22,7 @@ import RUserProfile from "./pages/RUserProfile";
 
 import Election  from '../src/pages/Election'
 import Event  from '../src/pages/Event'
-import MyEvents from '../src/pages/MyEvents'
+
 import MyMaintance from './pages/MyMaintance';
 
 import CommuniCoPage from '../src/pages/CommuniCoPage';
@@ -39,10 +39,16 @@ import BuyPlans from './pages/BuyPlans';
 import Checkout from './pages/CheckOut';
 import Payment from "./pages/Payment";
 
-import QR from './pages/QR';
-import Expences from './pages/Expences'
-import EditMaintenance from './pages/EditMaintenance';
+import Success from "./pages/Success";
+
 import FinanceHome from './pages/FinanceHome';
+import DustReport from "./pages/DustReport";
+
+
+import QR from './pages/QR';
+
+import EditMaintenance from './pages/EditMaintenance';
+import Expenses from './pages/Expenses';
 
 function App() {
   return (
@@ -58,6 +64,7 @@ function App() {
       <Route path='/AddMaintenance' element = {<AddMaintenance/>}></Route>
       <Route path='/addElection' element = {<AddElection/>}></Route>
       <Route path='/AddEvent' element = {<AddEvent/>}></Route>
+      <Route path='/AddEvent' element={<AddEvent />} />
       <Route path='/ContactUs' element = {<ContactUs/>}></Route>
 
         <Route path='/Rules' element = {<Rules/>}></Route>
@@ -67,7 +74,7 @@ function App() {
 
         <Route path='/Election' element = {<Election/>}></Route>
         <Route path='/Event' element = {<Event/>}></Route>
-        <Route path='/MyEvents' element = {<MyEvents/>}></Route>
+        
         <Route path='/MyMaintance' element = {<MyMaintance/>}></Route>
 
 
@@ -83,15 +90,13 @@ function App() {
         
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path='/expences' element={<Expences/>} />
-        <Route path='/buy' element={<BuyPlans/>}></Route>
         
+        <Route path='/buy' element={<BuyPlans/>}></Route>
+        <Route path='/success' element={<Success/>}></Route>
         <Route path='/EditMaintenance/:id' element = {<EditMaintenance/>}></Route>
         <Route path='/financeHome' element={<FinanceHome/>} />
-        <Route path='/qr/:id' element = {<QR/>}></Route>
-
-        <Route path='/UpdatePassword' element={<UpdatePassword/>} />
-
+        <Route path='/dust-report' element={<DustReport />} />
+        <Route path="/expenses" element={<Expenses />} />
       </Routes>
       
     </div>

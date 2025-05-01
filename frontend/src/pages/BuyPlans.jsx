@@ -26,7 +26,7 @@ const BuyPlans = () => {
         {plans.map((item) => (
           <div
             key={item.id}
-            className="bg-white drop-shadow-sm border rounded-lg py-12 px-8 text-gray-600 hover:scale-105 transition-all duration-500 cursor-pointer"
+            className="bg-white drop-shadow-sm border rounded-lg py-12 px-8 text-sky-950 hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <img
               src={assets.logo_icon}
@@ -42,7 +42,7 @@ const BuyPlans = () => {
             </p>
             <button
               onClick={() => handleCheckout(item)}
-              className="w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52"
+              className="w-full bg-sky-950 text-white mt-8 text-sm rounded-md py-2.5 min-w-52"
             >
               Get Started
             </button>
