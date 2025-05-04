@@ -98,26 +98,56 @@ const Expenses = () => {
   // Generate PDF
   const generatePDF = () => {
     const doc = new jsPDF();
+
+    // Title
+    doc.setFontSize(16);
     doc.text('Expense Report', 14, 10);
 
+    // Table Headers
     const tableColumn = ['Category', 'Title', 'Date', 'Amount', 'Payment Method', 'Description'];
-    const tableRows = filteredExpenses.map((expense) => [
-      expense.category,
-      expense.title,
-      expense.date.split('T')[0],
-      `₹${expense.amount}`,
-      expense.paymentMethod,
-      expense.description,
-    ]);
+    const columnWidths = [30, 30, 30, 20, 40, 50]; // Define column widths
+    const startX = 14;
+    let startY = 20;
+    const rowHeight = 10;
 
-    tableRows.push(['', '', '', `Total: ₹${totalExpenses.toFixed(2)}`, '', '']);
-
-    doc.autoTable({
-      head: [tableColumn],
-      body: tableRows,
-      startY: 20,
+    // Draw Table Headers
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    let currentX = startX;
+    tableColumn.forEach((header, index) => {
+      doc.text(header, currentX, startY);
+      currentX += columnWidths[index];
     });
 
+    // Draw Table Rows
+    doc.setFont('helvetica', 'normal');
+    filteredExpenses.forEach((expense, rowIndex) => {
+      startY += rowHeight; // Move to the next row
+      currentX = startX; // Reset X position for each row
+
+      // Add each column's data
+      const rowData = [
+        expense.category,
+        expense.title,
+        expense.date.split('T')[0],
+        `₹${expense.amount}`,
+        expense.paymentMethod,
+        expense.description,
+      ];
+
+      rowData.forEach((data, colIndex) => {
+        doc.text(String(data), currentX, startY);
+        currentX += columnWidths[colIndex];
+      });
+    });
+
+    // Add Total Row
+    startY += rowHeight; // Move to the next row
+    doc.setFont('helvetica', 'bold');
+    doc.text('Total:', startX + columnWidths[0] + columnWidths[1] + columnWidths[2], startY);
+    doc.text(`₹${totalExpenses.toFixed(2)}`, startX + columnWidths[0] + columnWidths[1] + columnWidths[2] + columnWidths[3], startY);
+
+    // Save the PDF
     doc.save('Expense_Report.pdf');
   };
 
