@@ -30,7 +30,9 @@ import ElectionCoPage from '../src/pages/ElectionCoPage';
 import EventCoPage from '../src/pages/EventCoPage';
 import FinaceCoPage from '../src/pages/FinaceCoPage';
 import MaintanCoPage from '../src/pages/MaintanCoPage';
-import UpdatePassword from '../src/pages/password/UpdatePassword';
+import UpdatePassword from '../src/pages/setting/UpdatePassword';
+import UpdateEmail from '../src/pages/setting/UpdateEmail';
+import TwoStepV from '../src/pages/setting/TwoStepV';
 
 import UpdateEvent from './pages/UpdateEvent';
 import EditElection from '../src/pages/EditElection'
@@ -49,6 +51,13 @@ import QR from './pages/QR';
 
 import EditMaintenance from './pages/EditMaintenance';
 import Expenses from './pages/Expenses';
+
+import Notifications from './pages/notifications';
+import Settings from './pages/settings';
+
+import AddRule from './pages/addrule';
+import UpdateRule from './pages/updaterule';
+import DisplayRules from './pages/displayRules';
 
 function App() {
   return (
@@ -90,13 +99,25 @@ function App() {
         
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment" element={<Payment />} />
-        
+        <Route path="/expenses" element={<Expenses />} />
+        <Route path="/dust-report" element={<DustReport />} />
         <Route path='/buy' element={<BuyPlans/>}></Route>
         <Route path='/success' element={<Success/>}></Route>
         <Route path='/EditMaintenance/:id' element = {<EditMaintenance/>}></Route>
         <Route path='/financeHome' element={<FinanceHome/>} />
-        <Route path='/dust-report' element={<DustReport />} />
-        <Route path="/expenses" element={<Expenses />} />
+        <Route path='/qr/:id' element = {<QR/>}></Route>
+
+        <Route path='/UpdatePassword' element={<UpdatePassword/>} />
+        <Route path='/notifications' element={<Notifications />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route path='/UpdateEmail' element={<UpdateEmail />} />
+        <Route path='/TwoStepV' element={<TwoStepV />} />
+
+        <Route path='/addrule' element={<AddRule />} />
+        <Route path='/updaterule/:id' element={<UpdateRule />} />
+
+        <Route path='/community-rules' element={<DisplayRules />} />
+
       </Routes>
       
     </div>
