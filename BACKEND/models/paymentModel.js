@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-const paymentSchema = new mongoose.Schema({
+const PaymentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   planId: { type: String, required: true },
   amount: { type: Number, required: true },
-  date: { type: Date, default: Date.now },
+  date: { type: Date, required: true },
 });
 
-const Payment = mongoose.model("Payment", paymentSchema);
+const Payment = mongoose.models.Payment || mongoose.model("Payment", PaymentSchema);
 
 export default Payment;
