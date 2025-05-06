@@ -1,5 +1,5 @@
 import express from "express";
-import Payment from "../models/paymentModel.js"; // Create a Payment model
+import Payment from "../models/PaymentModel.js"; // Create a Payment model
 import { updatePaymentStatus } from "../controllers/paymentController.js";
 
 const router = express.Router();

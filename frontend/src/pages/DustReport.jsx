@@ -19,12 +19,14 @@ const DustReport = () => {
   const fetchPayments = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/payments/all");
+      console.log("Payments Response:", response.data); // Debug log
       setPayments(response.data);
       setFilteredPayments(response.data); // Initialize filtered payments
     } catch (error) {
       console.error("Error fetching payment details:", error);
     }
   };
+  
 
   useEffect(() => {
     fetchPayments();

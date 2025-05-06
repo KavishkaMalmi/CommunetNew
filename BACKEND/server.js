@@ -3,8 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
-import nodemailer from 'nodemailer'; 
-import QRCode from 'qrcode';
 import bodyParser from 'body-parser';
 
 config();
@@ -12,16 +10,18 @@ config();
 import connect_DB from './config/mongodb.js';
 import connectCloudinary from './config/cloudinary.js';
 import memberRouter from './routes/memberRoute.js';
-import maintenanceRoute from '../BACKEND/routes/maintenanceRoute.js';
-import userRouter from '../BACKEND/routes/UserRoute.js';
-import eventRouter from '../BACKEND/routes/eventRoute.js';
+import maintenanceRoute from './routes/maintenanceRoute.js';
+import userRouter from './routes/UserRoute.js';
+import eventRouter from './routes/eventRoute.js';
 import announcementRouter from './routes/annoucemntRouter.js';
 import ruleRoutes from './routes/ruleRoutes.js';
-import expenseRouter from '../BACKEND/routes/expenseRouter.js';
-import pollrouter from '../BACKEND/routes/pollRoute.js';
+import expenseRouter from './routes/expenseRouter.js';
+import pollrouter from './routes/pollRoute.js';
 import ProfileRouter from './routes/ProfileRoute.js';
-import ticketRouter from '../BACKEND/routes/TicketRoute.js';
-//app config
+import ticketRouter from './routes/TicketRoute.js';
+import paymentRouter from './routes/paymentRoute.js'; // Import payment route
+
+// App config
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -29,7 +29,7 @@ const port = process.env.PORT || 5000;
 connect_DB();
 connectCloudinary();
 
-//middlewares
+// Middlewares
 app.use(cors({
   origin: true,
   credentials: true
@@ -43,9 +43,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
-//api endpoints
+// API endpoints
 app.use('/api/member', memberRouter);
-app.use('/api/maintenace', maintenanceRoute);
+app.use('/api/maintenance', maintenanceRoute);
 app.use('/api/user', userRouter);
 app.use('/api/announcement', announcementRouter);
 app.use('/api/rules', ruleRoutes);
@@ -54,6 +54,8 @@ app.use('/api/expense', expenseRouter);
 app.use('/api/poll', pollrouter);
 app.use('/api/ProfileRouter', ProfileRouter);
 app.use('/api/ticket', ticketRouter);
+app.use('/api/payments', paymentRouter); // Add payment route
+
 // QR Code generation endpoint
 app.post('/api/generate-qr', async (req, res) => {
   const { url } = req.body;
