@@ -28,7 +28,7 @@ const Success = ({ email }) => {
       </p>
       <button
         onClick={() => window.location.href = "/"} // Redirect to Home
-        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500 transition"
+        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-sky-950 transition"
       >
         Go to Home
       </button>

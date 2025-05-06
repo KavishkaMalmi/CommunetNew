@@ -26,6 +26,6 @@ export const plans = [
     {
         id:'Three Instalments',
         price: 6000,
-        desc: 'Payment divided into three'
+        desc: 'Payment split into three'
     },
 ]

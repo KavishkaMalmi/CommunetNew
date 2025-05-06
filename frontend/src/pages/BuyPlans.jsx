@@ -37,7 +37,7 @@ const BuyPlans = () => {
             <p className="text-sm">{item.desc}</p>
             <p className="mt-6">
               <span className="text-3xl font-medium">
-                Rs.{item.price} /per person
+                Rs.{item.price} per person
               </span>
             </p>
             <button
