@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const UpdateEvent = () => {
   const navigate = useNavigate();
+<<<<<<< Updated upstream
   const { id } = useParams();
   const [event, setEvent] = useState({
     eventName: '',
@@ -20,6 +21,11 @@ const UpdateEvent = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+=======
+  const [event, setEvent] = useState({});
+  const [isEdit, setIsEdit] = useState(false);
+  const eventId = '67e335e3a98233634496d859';
+>>>>>>> Stashed changes
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -103,6 +109,7 @@ const UpdateEvent = () => {
   if (error) return <div className="p-4 text-red-500">{error}</div>;
 
   return (
+<<<<<<< Updated upstream
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
         <h1 className="text-3xl font-bold mb-8 text-center">Update Event</h1>
@@ -247,6 +254,90 @@ const UpdateEvent = () => {
           </button>
         </div>
       </form>
+=======
+    <div className="flex flex-col min-h-screen p-4">
+      <h1 className="text-2xl font-bold mb-6">Event Details</h1>
+      <div className="overflow-x-auto">
+        <table className="min-w-full border-collapse border border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="p-2 border">Event Name</th>
+              <th className="p-2 border">Organizer Name</th>
+              <th className="p-2 border">Description</th>
+              <th className="p-2 border">Date</th>
+              <th className="p-2 border">Time</th>
+              <th className="p-2 border">Venue</th>
+              <th className="p-2 border">Contact No</th>
+              <th className="p-2 border">Email</th>
+              <th className="p-2 border">Expected Count</th>
+              <th className="p-2 border">Request Type</th> 
+              <th className="p-2 border">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="hover:bg-gray-100">
+              <td className="p-2 border">
+                {isEdit ? (
+                  <input
+                    type="text"
+                    value={event?.eventName || ''}
+                    onChange={(e) => setEvent({ ...event, eventName: e.target.value })}
+                  />
+                ) : (
+                  event.eventName
+                )}
+              </td>
+              <td className="p-2 border">{event?.organizerName || 'N/A'}</td>
+              <td className="p-2 border">
+                {isEdit ? (
+                  <textarea
+                    value={event?.description || ''}
+                    onChange={(e) => setEvent({ ...event, description: e.target.value })}
+                  />
+                ) : (
+                  event.description
+                )}
+              </td>
+              <td className="p-2 border">{event?.date || 'N/A'}</td>
+              <td className="p-2 border">{event?.time || 'N/A'}</td>
+              <td className="p-2 border">{event?.venue || 'N/A'}</td>
+              <td className="p-2 border">{event?.organizerContactNo || 'N/A'}</td>
+              <td className="p-2 border">{event?.organizerEmail || 'N/A'}</td>
+              <td className="p-2 border">{event?.expectedCount || 'N/A'}</td>
+              <td className="p-2 border">
+                {isEdit ? (
+                  <select
+                    value={event?.requestType || ''}
+                    onChange={(e) => setEvent({ ...event, requestType: e.target.value })}
+                    className="p-2 w-full border rounded-md"
+                  >
+                    <option value="">Select a request type</option>
+                    <option value="Request to Join">Request to Join</option>
+                    <option value="All In">All In</option>
+                  </select>
+                ) : (
+                  event.requestType || 'N/A'
+                )}
+              </td>
+              <td className="p-2 border">
+                {isEdit ? (
+                  <button onClick={updateEvent} className="bg-green-500 text-white px-4 py-1 rounded-lg mr-2">
+                    Save
+                  </button>
+                ) : (
+                  <button onClick={() => setIsEdit(true)} className="bg-yellow-500 text-white px-4 py-1 rounded-lg mr-2">
+                    Edit
+                  </button>
+                )}
+                <button onClick={deleteEvent} className="bg-red-500 text-white px-4 py-1 rounded-lg">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+>>>>>>> Stashed changes
       <Footer />
     </div>
   );

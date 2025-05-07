@@ -7,9 +7,11 @@ import { sendRequestNotificationEmail, sendRequestStatusEmail } from '../service
 import memberModel from '../models/memberModel.js';
 
 
+
 //API for add user data
 const addEvent = async(req,res) => {
     try{
+<<<<<<< Updated upstream
         // Get token from request headers
         const token = req.headers.authorization?.split(' ')[1];
         console.log("AddEvent - Received token:", token);
@@ -26,6 +28,10 @@ const addEvent = async(req,res) => {
         const {eventName,organizarName,discription,date,time,venue,organizarContactNo,organizarEmail,expectedCount,requestType,status} = req.body
         console.log("AddEvent - Received form data:", req.body);
         
+=======
+        const {eventName,organizarName,discription,date,time,venue,organizarContactNo,organizarEmail,expectedCount,requestType} = req.body
+        
+>>>>>>> Stashed changes
         if(!eventName || !organizarName || !discription || !date || !time || !venue || !organizarContactNo || !organizarEmail || !expectedCount || !requestType){
            return res.json({success:false, message: "All fields are required"});
         }
@@ -51,8 +57,12 @@ const addEvent = async(req,res) => {
             organizarContactNo,
             organizarEmail,
             expectedCount,
+<<<<<<< Updated upstream
             requestType,
             status: status || 'Pending'
+=======
+            requestType
+>>>>>>> Stashed changes
         }
         console.log("AddEvent - Event data to be saved:", eventData);
 
@@ -157,10 +167,17 @@ const updateEvent = async (req, res) => {
         const eventId = req.params.id;
         const { status } = req.body;
 
+<<<<<<< Updated upstream
         // Get the current event
         const currentEvent = await eventModel.findById(eventId);
         if (!currentEvent) {
             return res.json({ success: false, message: "Event not found" });
+=======
+        const {eventName,organizarName,discription,date,time,venue,organizarContactNo,organizarEmail,expectedCount,requestType} = req.body
+        
+        if(!eventName || !organizarName || !discription || !date || !time || !venue || !organizarContactNo || !organizarEmail || !expectedCount || !requestType){
+           return res.json({success:false, message: "All fields are required"});
+>>>>>>> Stashed changes
         }
 
         // Update the event status
@@ -179,6 +196,7 @@ const updateEvent = async (req, res) => {
             console.log(`Rejection email sent to ${updatedEvent.organizarEmail}`);
         }
 
+<<<<<<< Updated upstream
         return res.json({ 
             success: true, 
             message: `Event ${status.toLowerCase()} successfully`,
@@ -187,6 +205,18 @@ const updateEvent = async (req, res) => {
     } catch (error) {
         console.error('Error updating event:', error);
         res.json({ success: false, message: error.message });
+=======
+        if(discription.length > 1000){
+            return res.json({success:false, message: "Discriptin length is too long"});
+        }
+
+        await eventModel.findByIdAndUpdate(eventId, {$set: {eventName,organizarName,discription,date,time,venue,organizarContactNo,organizarEmail,expectedCount,requestType}})
+        res.json({success: true, message: "Event updadet successfully."})
+
+    }catch(error){
+        console.log(error);
+        res.json({success: false, message: error.message})
+>>>>>>> Stashed changes
     }
 };
 

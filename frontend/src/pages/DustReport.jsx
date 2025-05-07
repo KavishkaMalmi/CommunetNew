@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+<<<<<<< Updated upstream
 import jsPDF from "jspdf";
 
 const DustReport = () => {
@@ -310,6 +311,51 @@ const DustReport = () => {
                 <td className="border px-4 py-2 text-gray-700">{payment.planId}</td>
                 <td className="border px-4 py-2 text-gray-700">Rs.{payment.amount}</td>
                 <td className="border px-4 py-2 text-gray-700">
+=======
+
+const DustReport = () => {
+  const location = useLocation();
+  const userName = location.state?.name || "Guest"; // Default to 'Guest' if no name is passed
+  const userEmail = location.state?.email || "Not provided"; // Default to 'Not provided' if no email is passed
+
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    const fetchPayments = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/payments/all");
+        setPayments(response.data);
+      } catch (error) {
+        console.error("Error fetching payment details:", error);
+      }
+    };
+
+    fetchPayments();
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold mb-6">Dust Report</h1>
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="border px-4 py-2">Name</th>
+              <th className="border px-4 py-2">Email</th>
+              <th className="border px-4 py-2">Plan</th>
+              <th className="border px-4 py-2">Amount</th>
+              <th className="border px-4 py-2">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {payments.map((payment) => (
+              <tr key={payment._id}>
+                <td className="border px-4 py-2">{payment.name}</td>
+                <td className="border px-4 py-2">{payment.email}</td>
+                <td className="border px-4 py-2">{payment.planId}</td>
+                <td className="border px-4 py-2">Rs.{payment.amount}</td>
+                <td className="border px-4 py-2">
+>>>>>>> Stashed changes
                   {new Date(payment.date).toLocaleDateString()}
                 </td>
               </tr>
@@ -317,6 +363,7 @@ const DustReport = () => {
           </tbody>
         </table>
       </div>
+<<<<<<< Updated upstream
 
       {/* Members Section */}
       <div className="bg-white shadow-lg rounded-lg p-8 w-11/12 max-w-6xl">
@@ -369,6 +416,8 @@ const DustReport = () => {
           </tbody>
         </table>
       </div>
+=======
+>>>>>>> Stashed changes
     </div>
   );
 };

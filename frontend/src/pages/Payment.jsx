@@ -55,6 +55,12 @@ const Payment = () => {
         <p className="text-center mb-4">
           Email: <strong>{userDetails.email}</strong>
         </p>
+        <p className="text-center mb-4">
+          Name: <strong>{userDetails.name}</strong>
+        </p>
+        <p className="text-center mb-4">
+          Email: <strong>{userDetails.email}</strong>
+        </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -100,6 +106,7 @@ const Payment = () => {
                 let value = e.target.value.replace(/[^0-9]/g, ""); // Allow only numbers
                 if (value.length > 4) value = value.slice(0, 4); // Limit to 4 characters
                 if (value.length > 2) value = value.slice(0, 2) + "/" + value.slice(2); // Format as MM/YY
+<<<<<<< Updated upstream
 
                 // Allow a single '0' as the first digit but validate months (01 to 12)
                 const month = parseInt(value.slice(0, 2), 10);
@@ -107,6 +114,8 @@ const Payment = () => {
                   return; // Ignore invalid months
                 }
 
+=======
+>>>>>>> Stashed changes
                 setPaymentDetails({
                   ...paymentDetails,
                   expiryDate: value,

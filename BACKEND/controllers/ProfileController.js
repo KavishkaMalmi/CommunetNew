@@ -5,20 +5,26 @@ import dotenv from 'dotenv';
 import validator from 'validator';  
 import cloudinary from 'cloudinary';
 import sendEmail from '../utils/sendEmail.js';
+<<<<<<< Updated upstream
 import Notification from '../models/notificationModel.js';
 import twilio from 'twilio';
 import sendSMS from '../utils/sendSMS.js';
+=======
+>>>>>>> Stashed changes
 
 
 // Load environment variables from .env file
 dotenv.config();
 
+<<<<<<< Updated upstream
 // Initialize Twilio client
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
 );
 
+=======
+>>>>>>> Stashed changes
 // Display member profile
 const displayMember = async (req, res) => {
   try {
@@ -58,10 +64,22 @@ const updateMember = async (req, res) => {
     const imageFile = req.file;
 
     // Validate required fields
+<<<<<<< Updated upstream
     if (!name  || !houseNO || !phoneNumber || !bio || !gender || !NIC) {
       return res.json({ success: false, message: "All fields are required" });
     }
 
+=======
+    if (!name || !email || !houseNO || !phoneNumber || !bio || !gender || !NIC) {
+      return res.json({ success: false, message: "All fields are required" });
+    }
+
+    // Validate email format
+    if (!validator.isEmail(email)) {
+      return res.json({ success: false, message: "Please enter a valid email" });
+    }
+
+>>>>>>> Stashed changes
     let imageUrl;
     if (imageFile) {
       // Upload image to Cloudinary
@@ -72,6 +90,10 @@ const updateMember = async (req, res) => {
     // Construct update object
     const updateData = {
       name,
+<<<<<<< Updated upstream
+=======
+      email,
+>>>>>>> Stashed changes
       houseNO,
       phoneNumber,
       bio,
@@ -145,7 +167,11 @@ const changePassword = async (req, res) => {
       member.email,
       "Password Changed Successfully",
       `<h3>Hello ${member.name},</h3>
+<<<<<<< Updated upstream
        <p>Your password was changed successfully. If this wasn't you, please contact support immediately.</p>
+=======
+       <p>Your password was changed successfully. If this wasn’t you, please contact support immediately.</p>
+>>>>>>> Stashed changes
        <p><b>Communet App</b></p>`
     );
 
@@ -157,6 +183,7 @@ const changePassword = async (req, res) => {
   }
 };
 
+<<<<<<< Updated upstream
 const updateEmail = async (req, res) => {
   try {
     const { currentEmail, newEmail } = req.body;
@@ -496,3 +523,6 @@ export {
   verifyDeletePassword,
   deleteAccount 
 };
+=======
+export { displayMember, updateMember, changePassword };
+>>>>>>> Stashed changes

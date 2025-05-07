@@ -218,6 +218,7 @@ const Navbar = () => {
             </button>
           )}
           {token ? (
+<<<<<<< Updated upstream
             <div className="flex items-center gap-3">
               <div className="relative" ref={dropdownRef}>
                 <div
@@ -234,6 +235,18 @@ const Navbar = () => {
                     alt="menu" 
                     className="h-10 w-10 rounded-full hover:scale-105 transition-transform duration-300" 
                   />
+=======
+            <div className="flex items-center gap-2 cursor-pointer group relative">
+              <img src={profile} alt="profile" className="h-11 w-11 rounded-full" />
+              <img src={menu} alt="menu" className="h-10 w-10 rounded-full" />
+              <div className="absolute top-0 right-0 pt-14 text-base font-medium text-stone-600 z-20 hidden group-hover:block">
+                <div className="min-w-48 bg-white rounded flex flex-col gap-4 p-4">
+                  <p onClick={() => navigate('/RUserProfile')} className="hover:text-black cursor-pointer">My Profile</p>
+                  <p onClick={() => navigate('/MyEvents')} className="hover:text-black cursor-pointer">My Events</p>
+                  <p onClick={() => navigate('/MyMaintance')} className="hover:text-black cursor-pointer">My Maintenance</p>
+                  <p onClick={handleDashboardClick} className="hover:text-black cursor-pointer">Dashboard</p>
+                  <p onClick={handleLogout} className="hover:text-black cursor-pointer">Logout</p>
+>>>>>>> Stashed changes
                 </div>
                 {isMenuOpen && (
                   <div className="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-2xl transition-all duration-300 transform origin-top-right z-50">

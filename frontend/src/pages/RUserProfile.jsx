@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+<<<<<<< Updated upstream
 import { FiUser, FiBell, FiShield, FiEdit2, FiSave } from 'react-icons/fi';
+=======
+>>>>>>> Stashed changes
 import Footer from '../componenets/Footer';
 
 const RUserProfile = () => {
@@ -105,13 +108,18 @@ const RUserProfile = () => {
 
   if (isLoading) {
     return (
+<<<<<<< Updated upstream
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
+=======
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+>>>>>>> Stashed changes
         <div className="animate-spin h-12 w-12 rounded-full border-4 border-blue-500 border-t-transparent"></div>
       </div>
     );
   }
 
   return (
+<<<<<<< Updated upstream
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row gap-8">
@@ -257,12 +265,127 @@ const RUserProfile = () => {
                   ))}
                 </div>
               </div>
+=======
+    <div>
+    <div className="min-h-screen flex bg-gray-100 text-gray-800">
+      {/* Sidebar */}
+      <div className="w-64 bg-white shadow-md p-6">
+        <h2 className="text-xl font-semibold mb-4">Settings</h2>
+        <ul className="space-y-2 text-sm">
+          <li className="text-blue-600 font-semibold">My Profile</li>
+          <li>
+            <Link to="/UpdatePassword" className="hover:text-blue-600">
+              Change Password
+            </Link>
+          </li>
+          <li>
+            <Link to="/TwoStepV" className="hover:text-blue-600">
+              Set Two-Step Verification
+            </Link>
+          </li>
+          <li>
+            <Link to="/delete-account" className="hover:text-red-600">
+              Delete Account
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* Profile Content */}
+      <div className="flex-1 p-8">
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold">My Profile</h2>
+            <button
+              onClick={() => (isEdit ? handleSave() : setIsEdit(true))}
+              className="bg-blue-600 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition"
+            >
+              {isEdit ? "Save" : "Edit"}
+            </button>
+          </div>
+
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+
+          <div className="flex items-center space-x-6 mb-6">
+            <div className="w-24 h-24 rounded-full overflow-hidden border">
+              <img
+                src={
+                  isEdit && userData.image instanceof File
+                    ? URL.createObjectURL(userData.image)
+                    : userData.image || "/default-avatar.png"
+                }
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {isEdit && (
+              <input
+                type="file"
+                onChange={(e) =>
+                  setUserData((prev) => ({
+                    ...prev,
+                    image: e.target.files?.[0] || prev.image,
+                  }))
+                }
+                className="block text-sm text-gray-500"
+              />
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {["name", "houseNO", "email", "phoneNumber", "bio", "NIC"].map((field) => (
+              <div key={field}>
+                <label className="block text-sm font-medium mb-1 capitalize">{field}</label>
+                {isEdit ? (
+                  <input
+                    type="text"
+                    value={userData[field]}
+                    onChange={(e) =>
+                      setUserData((prev) => ({
+                        ...prev,
+                        [field]: e.target.value,
+                      }))
+                    }
+                    className="w-full p-2 border rounded-lg bg-gray-100"
+                  />
+                ) : (
+                  <p className="text-gray-700">{userData[field] || `No ${field} provided`}</p>
+                )}
+              </div>
+            ))}
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Gender</label>
+              {isEdit ? (
+                <select
+                  value={userData.gender}
+                  onChange={(e) =>
+                    setUserData((prev) => ({
+                      ...prev,
+                      gender: e.target.value,
+                    }))
+                  }
+                  className="w-full p-2 border rounded-lg bg-gray-100"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              ) : (
+                <p className="text-gray-700">{userData.gender || "No gender provided"}</p>
+              )}
+>>>>>>> Stashed changes
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+
+      
     </div>
+  
+    <Footer />
+  </div>
   );
 };
 

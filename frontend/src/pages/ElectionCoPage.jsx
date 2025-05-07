@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
+<<<<<<< Updated upstream
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+=======
+>>>>>>> Stashed changes
 
 const ElectionCoPage = () => {
   const [polls, setPolls] = useState([]);
   const [expandedPoll, setExpandedPoll] = useState(null);
   const [loading, setLoading] = useState(true);
+<<<<<<< Updated upstream
   const [searchTerm, setSearchTerm] = useState("");
+=======
+>>>>>>> Stashed changes
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -60,6 +66,7 @@ const ElectionCoPage = () => {
     }));
   };
 
+<<<<<<< Updated upstream
   const downloadResultsAsPDF = (poll) => {
     const doc = new jsPDF();
     
@@ -98,6 +105,8 @@ const ElectionCoPage = () => {
     poll.question.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+=======
+>>>>>>> Stashed changes
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -122,6 +131,7 @@ const ElectionCoPage = () => {
           </Link>
         </div>
 
+<<<<<<< Updated upstream
         {/* Search Bar */}
         <div className="mb-6">
           <div className="relative">
@@ -143,6 +153,11 @@ const ElectionCoPage = () => {
         <div className="grid gap-6">
           {filteredPolls.length > 0 ? (
             filteredPolls.map((poll) => (
+=======
+        <div className="grid gap-6">
+          {polls.length > 0 ? (
+            polls.map((poll) => (
+>>>>>>> Stashed changes
               <div
                 key={poll._id}
                 className="bg-white rounded-lg shadow-md overflow-hidden"
@@ -191,6 +206,7 @@ const ElectionCoPage = () => {
 
                 {expandedPoll === poll._id && (
                   <div className="border-t border-gray-200 p-6">
+<<<<<<< Updated upstream
                     <div className="flex justify-end mb-4">
                       <button
                         onClick={(e) => {
@@ -202,6 +218,8 @@ const ElectionCoPage = () => {
                         Download PDF
                       </button>
                     </div>
+=======
+>>>>>>> Stashed changes
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <h3 className="text-lg font-semibold mb-4">Bar Chart Results</h3>
@@ -242,9 +260,13 @@ const ElectionCoPage = () => {
             ))
           ) : (
             <div className="text-center py-12 bg-white rounded-lg shadow-md">
+<<<<<<< Updated upstream
               <p className="text-gray-600 text-lg">
                 {searchTerm ? "No elections found matching your search" : "No elections available"}
               </p>
+=======
+              <p className="text-gray-600 text-lg">No elections available</p>
+>>>>>>> Stashed changes
             </div>
           )}
         </div>

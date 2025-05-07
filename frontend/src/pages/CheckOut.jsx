@@ -91,6 +91,7 @@ const Checkout = () => {
             placeholder="Phone Number"
             value={userDetails.phone}
             onChange={(e) => {
+<<<<<<< Updated upstream
               const value = e.target.value.replace(/[^0-9]/g, ''); // Allow only numbers
               if (value.length <= 10) {
                 setUserDetails({ ...userDetails, phone: value });
@@ -101,6 +102,14 @@ const Checkout = () => {
               if (!regex.test(e.target.value)) {
                 alert("Phone number must start with 071, 076, 074, 077, 078, 075, or 072 and be exactly 10 digits.");
                 setUserDetails({ ...userDetails, phone: '' }); // Clear invalid input
+=======
+              const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10); // Allow only numbers and limit to 10 digits
+              if (value.length <= 10) {
+                setUserDetails({
+                  ...userDetails,
+                  phone: value,
+                });
+>>>>>>> Stashed changes
               }
             }}
             className="w-full border px-4 py-2 rounded-md"

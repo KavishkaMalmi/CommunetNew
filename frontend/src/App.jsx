@@ -12,7 +12,10 @@ import AdminUpdate from '../src/pages/AdminUpdate'
 
 import AddMaintenance from './pages/AddMaintenance';
 import AddElection from '../src/pages/AddElection'
+<<<<<<< Updated upstream
 import AddEvent from './pages/AddEvents';
+=======
+>>>>>>> Stashed changes
 import ContactUs from './pages/ContactUs'
 
 import Rules from './pages/Rules'
@@ -30,9 +33,13 @@ import ElectionCoPage from '../src/pages/ElectionCoPage';
 import EventCoPage from '../src/pages/EventCoPage';
 import FinaceCoPage from '../src/pages/FinaceCoPage';
 import MaintanCoPage from '../src/pages/MaintanCoPage';
+<<<<<<< Updated upstream
 import UpdatePassword from '../src/pages/setting/UpdatePassword';
 import UpdateEmail from '../src/pages/setting/UpdateEmail';
 import TwoStepV from '../src/pages/setting/TwoStepV';
+=======
+import UpdatePassword from '../src/pages/password/UpdatePassword';
+>>>>>>> Stashed changes
 
 import UpdateEvent from './pages/UpdateEvent';
 import EditElection from '../src/pages/EditElection'
@@ -40,6 +47,19 @@ import EditElection from '../src/pages/EditElection'
 import BuyPlans from './pages/BuyPlans';
 import Checkout from './pages/CheckOut';
 import Payment from "./pages/Payment";
+<<<<<<< Updated upstream
+=======
+
+import Success from "./pages/Success";
+import Expences from './pages/Expences'
+import FinanceHome from './pages/FinanceHome';
+import DustReport from "./pages/DustReport";
+
+
+import QR from './pages/QR';
+
+import EditMaintenance from './pages/EditMaintenance';
+>>>>>>> Stashed changes
 
 import Success from "./pages/Success";
 
@@ -80,8 +100,12 @@ function App() {
 
       <Route path='/AddMaintenance' element = {<AddMaintenance/>}></Route>
       <Route path='/addElection' element = {<AddElection/>}></Route>
+<<<<<<< Updated upstream
       <Route path='/AddEvent' element = {<AddEvent/>}></Route>
       <Route path='/AddEvent' element={<AddEvent />} />
+=======
+      
+>>>>>>> Stashed changes
       <Route path='/ContactUs' element = {<ContactUs/>}></Route>
 
         <Route path='/Rules' element = {<Rules/>}></Route>
@@ -107,12 +131,17 @@ function App() {
         
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment" element={<Payment />} />
+<<<<<<< Updated upstream
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/dust-report" element={<DustReport />} />
+=======
+        <Route path='/expences' element={<Expences/>} />
+>>>>>>> Stashed changes
         <Route path='/buy' element={<BuyPlans/>}></Route>
         <Route path='/success' element={<Success/>}></Route>
         <Route path='/EditMaintenance/:id' element = {<EditMaintenance/>}></Route>
         <Route path='/financeHome' element={<FinanceHome/>} />
+<<<<<<< Updated upstream
         <Route path='/qr/:id' element = {<QR/>}></Route>
 
         <Route path='/UpdatePassword' element={<UpdatePassword/>} />
@@ -133,6 +162,10 @@ function App() {
         <Route path='/ticket' element={<Ticket />} />
         <Route path="/event-requests/:eventId" element={<EventRequest />} />
         <Route path="/mark-attendance/:eventId" element={<MarkAttendance />} />
+=======
+        <Route path='/dust-report' element={<DustReport />} />
+
+>>>>>>> Stashed changes
       </Routes>
       
     </div>

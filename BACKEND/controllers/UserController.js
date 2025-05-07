@@ -65,7 +65,11 @@ const loginUser = async (req, res) => {
       res.json({ 
         success: true, 
         token,
+<<<<<<< Updated upstream
         memberType: user.memberType,
+=======
+        memberType: user.memberType, // Corrected
+>>>>>>> Stashed changes
         email: user.email 
       });
     } else {
